@@ -1,0 +1,47 @@
+{
+  "name": "authenticate-microservice",
+  "version": "1.0.0",
+  "main": "./src/server.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon --exec sucrase-node ./src/server.js",
+    "test": "RUNNINGTEST=1 jest --detectOpenHandles",
+    "build": "sucrase ./src -d ./dist --transforms imports",
+    "start": "node dist/server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "nodemailer": "^6.4.2",
+    "pg": "^7.14.0",
+    "sequelize": "^5.21.3",
+    "sucrase": "^3.10.1",
+    "yup": "^0.27.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "transform": {
+      ".(js|jsx|ts|tsx)": "@sucrase/jest-plugin"
+    },
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  },
+  "devDependencies": {
+    "@sucrase/jest-plugin": "^2.0.0",
+    "@types/jest": "^24.0.23",
+    "eslint": "^6.7.2",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-prettier": "^3.1.1",
+    "jest": "^24.9.0",
+    "nodemon": "^2.0.2",
+    "prettier": "^1.19.1",
+    "sequelize-cli": "^5.5.1",
+    "supertest": "^4.0.2"
+  }
+}

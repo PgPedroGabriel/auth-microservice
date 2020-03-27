@@ -1,0 +1,45 @@
+@baseUrl = http://localhost:3000
+
+# @name HealthyCheck
+GET {{baseUrl}} HTTP/1.1
+
+###
+
+# @name createUser
+POST {{baseUrl}}/user HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "devpedrogabriel@gmail.com",
+  "name": "Pedro Gabriel",
+  "password": "123123123",
+  "passwordConfirm": "123123123",
+  "username": "x@gmail.com"
+}
+
+###
+
+@emaiConfirmationToken = {{createUser.response.body.$.email_confirmation_token}}
+
+# @name emailConfirmation
+PUT {{baseUrl}}/user/auth/verify-email/{{emaiConfirmationToken}} HTTP/1.1
+
+
+###
+
+# @name userAuth
+POST http://localhost:3000/user/auth HTTP/1.1
+content-type: application/json
+
+{
+  "username": "x@gmail.com",
+  "password": "123123123"
+}
+
+###
+
+@token = {{userAuth.response.body.$.token}}
+
+# @name checkToken
+GET http://localhost:3000/user/auth/check-token HTTP/1.1
+Authorization: {{token}}
