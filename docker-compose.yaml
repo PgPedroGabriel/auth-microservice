@@ -15,6 +15,7 @@ services:
         - DB_DATABASE=authentications
         - DB_HOST=postgress-auth-microservice
         - DB_DIALECT=postgres
+        - DB_PORT=5432
       ports:
         - "3000:3000"
       depends_on:

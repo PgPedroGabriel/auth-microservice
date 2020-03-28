@@ -1,17 +1,15 @@
 import Sequelize, { Model } from 'sequelize';
 import 'dotenv';
 import bcrypt from 'bcryptjs';
+import { v4 as uuidv4 } from 'uuid';
 
 class User extends Model {
   static init(connection) {
     super.init(
       {
         id: {
-          // trpcar por UUID devido o uso de microserviços e migrações
-          type: Sequelize.INTEGER,
-          autoIncrement: true,
-          primaryKey: true,
-          allowNull: false
+          type: Sequelize.STRING,
+          primaryKey: true
         },
         email: {
           type: Sequelize.STRING
@@ -43,15 +41,15 @@ class User extends Model {
         sequelize: connection
       }
     );
-    this.addHook('beforeSave', async user => {
-      if (!user.id) {
-        // eslint-disable-next-line no-param-reassign
-        user.email_confirmation_token = await bcrypt.hash(
-          `CONFIRMATIONMAIL${user.email}`,
-          1
-        );
-      }
 
+    this.addHook('beforeCreate', user => {
+      // eslint-disable-next-line no-param-reassign
+      user.id = uuidv4();
+      // eslint-disable-next-line no-param-reassign
+      user.email_confirmation_token = uuidv4();
+    });
+
+    this.addHook('beforeSave', async user => {
       if (user.password) {
         // eslint-disable-next-line no-param-reassign
         user.password_hash = await bcrypt.hash(user.password, 8);
@@ -71,9 +69,7 @@ class User extends Model {
 
     const host = process.env.HOST_URL || 'http://localhost';
     const port = process.env.PORT || '3000';
-    return `${host}:${port}/confirm-email/${encodeURIComponent(
-      this.email_confirmation_token
-    )}`;
+    return `${host}:${port}/confirm-email/${this.id}`;
   }
 }
 
