@@ -2,8 +2,8 @@ FROM node:10-alpine
 
 WORKDIR /usr/app
 
-COPY package.json .
+COPY . .
+
+RUN rm -rf node_modules
 
 RUN yarn install
-
-COPY . .

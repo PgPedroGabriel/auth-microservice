@@ -24,8 +24,6 @@
 
 ``` docker-compose up --build -d ```
 
-*With docker you not need use npm or yarn install beacause of sharing volumes*
-
 ### Using your local machine
 
 1. download yarn

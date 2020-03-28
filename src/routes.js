@@ -7,22 +7,22 @@ import UserAuthentication from './services/authentication/UserAuthentication';
 
 const routes = new Router();
 
-routes.get('/user', UserController.list);
-routes.get('/user/:id', UserController.read);
-routes.get('/user/auth/confirm-mail/:token', UserController.confirmEmail);
-routes.get('/user/auth/check-token', UserAuthentication, UserController.checkToken);
+routes.get('/', UserController.list);
+routes.get('/:id', UserController.read);
+routes.get('/auth/confirm-mail/:token', UserController.confirmEmail);
+routes.get('/auth/check-token', UserAuthentication, UserController.checkToken);
 
-routes.post('/user', UserCreateValidation, UserController.create);
-routes.post('/user/auth', UserController.auth);
+routes.post('/', UserCreateValidation, UserController.create);
+routes.post('/auth', UserController.auth);
 
-routes.put('/user/auth/verify-email/:token', UserController.verifyEmail);
+routes.put('/auth/verify-email/:token', UserController.verifyEmail);
 routes.put(
-  '/user/:id',
+  '/:id',
   UserAuthentication,
   UserUpdatedValidation,
   UserController.update
 );
 
-routes.delete('/user/:id', UserAuthentication, UserController.delete);
+routes.delete('/:id', UserAuthentication, UserController.delete);
 
 export default routes;

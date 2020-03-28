@@ -4,7 +4,6 @@ import User from '../models/User';
 import ConfirmationMail from '../services/mail/ConfirmationMail';
 
 class SimpleAuthenticationController {
-
   /**
    * List of users
    */

@@ -8,7 +8,6 @@ export default async (req, res, next) => {
   }
 
   try {
-
     const decoded = jwt.verify(authorization, process.env.JWT_SECRET);
 
     req.authUserInfo = decoded;
