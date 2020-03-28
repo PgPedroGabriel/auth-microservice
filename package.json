@@ -1,6 +1,7 @@
 {
   "name": "authenticate-microservice",
   "version": "1.0.0",
+  "author": "Pedro Gabriel <devpedrogabriel@gmail.com>",
   "main": "./src/server.js",
   "license": "MIT",
   "scripts": {
