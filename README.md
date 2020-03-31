@@ -56,3 +56,4 @@ Install plugins
 3. REST Client
 4. Editorconfig
 5. Docker
+6. REST Client (to run requests inside vscode on requests file in root folder)
