@@ -16,11 +16,7 @@
 
 ### Using docker
 
-1. To test:
-
-``` docker-compose -p tests run -p 3000 auth-microservice yarn test ```
-
-2. To build:
+1. To build:
 
 ``` docker-compose up --build -d ```
 
@@ -57,3 +53,16 @@ Install plugins
 4. Editorconfig
 5. Docker
 6. REST Client (to run requests inside vscode on requests file in root folder)
+
+
+### Development pending tasks
+
+- [x] Code coverge > 80%
+- [ ] Recovery password development
+- [ ] Send confirmation e-mail and recovery password with Queue with RabbitMQ
+- [ ] Invalidate tokens of user when as deleted
+- [ ] Add Logging traces
+- [ ] Add ALARM when errors occur
+- [ ] Revison of production dockerfile builder
+- [ ] Create CI/CD pipelines with docker-compose to GCP Cloud Builder
+- [ ] Send pod to Kubernets Cluster
