@@ -1,6 +1,6 @@
 import express from 'express';
-import morgan from 'morgan';
 import cors from 'cors';
+import morgan from './configs/morgan';
 import routes from './routes';
 import './database';
 import Sentry from './configs/sentry';
@@ -26,11 +26,7 @@ class App {
   }
 
   watchRequestsHandler() {
-    this.server.use(
-      morgan(
-        '[:date[clf]] :method :url :status :res[content-length] - :response-time ms'
-      )
-    );
+    this.server.use(morgan);
   }
 
   watchErrorsHandler() {

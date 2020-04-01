@@ -14,16 +14,11 @@ export default async (to, url) => {
       ciphers: 'SSLv3'
     }
   });
-  try {
-    const result = await transporter.sendMail({
-      from: '"no-reply" <no-reply@example.com>', // sender address
-      to, // list of receivers
-      subject: 'Confirmação de cadastro', // Subject line
-      text: `Por favor, abra o link ${url} para confirmar o seu cadastro`, // plain text body
-      html: `Por favor, para comfirmar o seu cadastro, clique no link <a href="${url}" target="_blank">${url}</a>` // html body
-    });
-    console.log(result.messageId);
-  } catch (e) {
-    console.error(e);
-  }
+  await transporter.sendMail({
+    from: '"no-reply" <no-reply@example.com>', // sender address
+    to, // list of receivers
+    subject: 'Confirmação de cadastro', // Subject line
+    text: `Por favor, abra o link ${url} para confirmar o seu cadastro`, // plain text body
+    html: `Por favor, para comfirmar o seu cadastro, clique no link <a href="${url}" target="_blank">${url}</a>` // html body
+  });
 };
