@@ -7,7 +7,7 @@ const relational = {
   port: process.env.DB_PORT,
   host: process.env.DB_HOST,
   dialect: process.env.DB_DIALECT,
-  logging: !process.env.RUNNINGTEST,
+  logging: process.env.NODE_ENV === 'dev',
   define: {
     timestamps: true,
     underscored: true,

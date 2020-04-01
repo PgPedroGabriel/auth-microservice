@@ -3,8 +3,9 @@ version: '3'
 services:
     auth-microservice:
       build: .
+      restart: always
       container_name: auth-microservice
-      command: yarn run dev
+      entrypoint: ["/bin/sh", "./entrypoint.sh"]
       volumes:
         - .:/usr/app/
         - /usr/app/node_modules
@@ -16,6 +17,7 @@ services:
         - DB_HOST=postgress-auth-microservice
         - DB_DIALECT=postgres
         - DB_PORT=5432
+        - SENTRY_DSN=https://11076bcd100042ce918b37ebb6c23e41@sentry.io/5184115
       ports:
         - "3000:3000"
       depends_on:

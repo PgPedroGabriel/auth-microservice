@@ -67,7 +67,6 @@ class SimpleAuthenticationController {
    * Create new user
    */
   static async create(req, res) {
-    console.log('create');
     req.body.id = null;
 
     const user = await User.create(req.body);

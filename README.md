@@ -8,6 +8,7 @@
 * User authenticated can update your data
 * User authenticated can delete your account
 * Search user by Id
+* (Sentry to trace error logs)[https://sentry.io/]
 
 ### Checks
 
@@ -61,7 +62,7 @@ Install plugins
 - [ ] Recovery password development
 - [ ] Send confirmation e-mail and recovery password with Queue with RabbitMQ
 - [ ] Invalidate tokens of user when as deleted
-- [ ] Add Logging traces
+- [x] Add Logging traces
 - [ ] Add ALARM when errors occur
 - [ ] Revison of production dockerfile builder
 - [ ] Create CI/CD pipelines with docker-compose to GCP Cloud Builder
