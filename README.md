@@ -9,6 +9,7 @@
 * User authenticated can delete your account
 * Search user by Id
 * (Sentry to trace error logs)[https://sentry.io/]
+* Morgan to trace requests
 
 ### Checks
 
@@ -63,7 +64,7 @@ Install plugins
 - [ ] Send confirmation e-mail and recovery password with Queue with RabbitMQ
 - [ ] Invalidate tokens of user when as deleted
 - [x] Add Logging traces
-- [ ] Add ALARM when errors occur
+- [x] Add ALARM when errors occur
 - [ ] Revison of production dockerfile builder
 - [ ] Create CI/CD pipelines with docker-compose to GCP Cloud Builder
 - [ ] Send pod to Kubernets Cluster
